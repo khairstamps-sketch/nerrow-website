@@ -534,9 +534,79 @@ function removeFromCart(index) {
   renderCart();
 }
 
-function checkoutNotice() {
-  alert("Checkout is not connected yet. This is currently a preview of the NERROW cart.");
+
+async function checkoutNotice() {
+  if (!Array.isArray(cart) || cart.length === 0) {
+    return;
+  }
+
+  const button = document.querySelector(
+    'button[onclick*="checkoutNotice"]'
+  );
+
+  const originalText = button
+    ? button.textContent
+    : "CHECKOUT";
+
+  function showMessage(message) {
+    let notice = document.getElementById("checkout-message");
+
+    if (!notice) {
+      notice = document.createElement("p");
+      notice.id = "checkout-message";
+      notice.style.marginTop = "12px";
+      notice.style.fontSize = "13px";
+      notice.style.color = "#8E2938";
+
+      if (button) {
+        button.insertAdjacentElement("afterend", notice);
+      }
+    }
+
+    notice.textContent = message;
+  }
+
+  try {
+    if (button) {
+      button.disabled = true;
+      button.textContent = "CONNECTING...";
+    }
+
+    const response = await fetch(
+      "/api/create-checkout-session",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          cart: cart
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok || !data.url) {
+      throw new Error(
+        data.error || "Unable to start checkout."
+      );
+    }
+
+    window.location.href = data.url;
+
+  } catch (error) {
+    showMessage(
+      error.message || "Checkout failed. Please try again."
+    );
+
+    if (button) {
+      button.disabled = false;
+      button.textContent = originalText;
+    }
+  }
 }
+
 
 function toggleMenu() {
   const menu = document.getElementById("mobile-nav");
