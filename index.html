@@ -2,390 +2,977 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NERROW — Clothing for Everyday</title>
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NERROW — Everyday, Reimagined</title>
+  <meta name="description" content="Discover everyday essentials and new styles from NERROW.">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f7f4ed;
-  color: #222;
-}
+    :root {
+      --cream: #f7f4ed;
+      --black: #222222;
+      --coral: #e45b50;
+      --blue: #5278d8;
+      --yellow: #e8c75e;
+      --sage: #cbd9ca;
+      --white: #ffffff;
+    }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 22px 7%;
-  border-bottom: 1px solid #dedbd3;
-}
+    body {
+      background: var(--cream);
+      color: var(--black);
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-.logo {
-  font-size: 30px;
-  font-weight: 900;
-  font-style: italic;
-  letter-spacing: -2px;
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-nav {
-  display: flex;
-  gap: 25px;
-  font-size: 13px;
-  font-weight: bold;
-}
+    button {
+      font: inherit;
+    }
 
-nav a:hover {
-  color: #e45b50;
-}
-</style>
+    .announcement {
+      background: var(--black);
+      color: white;
+      text-align: center;
+      padding: 10px 15px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+    }
+
+    header {
+      background: var(--cream);
+      border-bottom: 1px solid rgba(0,0,0,.12);
+      padding: 20px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .desktop-nav a,
+    .header-actions a {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .7px;
+      text-transform: uppercase;
+    }
+
+    .desktop-nav a:hover,
+    .header-actions a:hover {
+      color: var(--coral);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+
+    .hero {
+      min-height: 590px;
+      background: var(--sage);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+
+    .hero-copy {
+      padding: 90px 8%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(55px, 7vw, 100px);
+      line-height: .88;
+      letter-spacing: -6px;
+      max-width: 600px;
+      margin-bottom: 25px;
+    }
+
+    .hero-copy p {
+      max-width: 350px;
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--black);
+      color: white;
+      padding: 16px 27px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border: 1px solid var(--black);
+      transition: .2s ease;
+    }
+
+    .button:hover {
+      background: transparent;
+      color: var(--black);
+    }
+
+    .hero-art {
+      background: var(--coral);
+      min-height: 590px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-art::before {
+      content: "N";
+      font-size: clamp(280px, 38vw, 570px);
+      font-weight: 900;
+      letter-spacing: -35px;
+      color: rgba(255,255,255,.9);
+      line-height: 1;
+      transform: rotate(-8deg);
+    }
+
+    .hero-label {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      background: var(--cream);
+      padding: 13px 17px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    section {
+      padding: 85px 5%;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      letter-spacing: -2px;
+    }
+
+    .section-heading a {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 1px solid var(--black);
+      padding-bottom: 5px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .product-image {
+      aspect-ratio: 3 / 4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product-image span {
+      font-size: 95px;
+      font-weight: 900;
+      letter-spacing: -8px;
+      color: rgba(255,255,255,.9);
+    }
+
+    .product-image.one {
+      background: #d7d0c4;
+    }
+
+    .product-image.two {
+      background: #d96c5e;
+    }
+
+    .product-image.three {
+      background: #7189c7;
+    }
+
+    .product-image.four {
+      background: #a7b9a4;
+    }
+
+    .product-image.five {
+      background: #e6c56a;
+    }
+
+    .product-image.six {
+      background: #b8a5c8;
+    }
+
+    .product-image.seven {
+      background: #8c9eae;
+    }
+
+    .product-image.eight {
+      background: #d49b83;
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 13px;
+      left: 13px;
+      background: var(--cream);
+      padding: 8px 10px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .product-info {
+      padding: 15px 0 25px;
+    }
+
+    .product-info h3 {
+      font-size: 13px;
+      margin-bottom: 7px;
+    }
+
+    .product-info p {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .bestsellers {
+      background: #eee9df;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .category-card {
+      min-height: 310px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+      transition: .25s ease;
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .category-card h3 {
+      font-size: 29px;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+
+    .category-card p {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .category-card.tops {
+      background: var(--coral);
+      color: white;
+    }
+
+    .category-card.bottoms {
+      background: var(--blue);
+      color: white;
+    }
+
+    .category-card.outerwear {
+      background: var(--yellow);
+    }
+
+    .category-card.accessories {
+      background: var(--sage);
+    }
+
+    .category-symbol {
+      position: absolute;
+      top: 25px;
+      right: 20px;
+      font-size: 100px;
+      font-weight: 900;
+      opacity: .22;
+    }
+
+    .brand-banner {
+      background: var(--yellow);
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .brand-banner h2 {
+      font-size: clamp(40px, 7vw, 82px);
+      line-height: .95;
+      letter-spacing: -5px;
+      margin-bottom: 20px;
+    }
+
+    .brand-banner p {
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 430px;
+      margin: 0 auto 25px;
+    }
+
+    .newsletter {
+      background: var(--blue);
+      color: white;
+      text-align: center;
+      padding: 85px 20px;
+    }
+
+    .newsletter h2 {
+      font-size: clamp(35px, 5vw, 58px);
+      letter-spacing: -3px;
+      margin-bottom: 15px;
+    }
+
+    .newsletter p {
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 440px;
+      margin: auto;
+      border-bottom: 1px solid white;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      min-width: 0;
+      padding: 15px 5px;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: white;
+      font-size: 13px;
+    }
+
+    .newsletter-form input::placeholder {
+      color: rgba(255,255,255,.8);
+    }
+
+    .newsletter-form button {
+      border: none;
+      background: transparent;
+      color: white;
+      padding: 0 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+
+    .faq {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .faq h2 {
+      text-align: center;
+      font-size: 45px;
+      letter-spacing: -2px;
+      margin-bottom: 35px;
+    }
+
+    .faq details {
+      border-bottom: 1px solid rgba(0,0,0,.2);
+      padding: 22px 0;
+    }
+
+    .faq summary {
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .faq summary::after {
+      content: "+";
+      font-size: 20px;
+    }
+
+    .faq details[open] summary::after {
+      content: "−";
+    }
+
+    .faq details p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #555;
+      padding-top: 15px;
+      max-width: 650px;
+    }
+
+    footer {
+      background: var(--black);
+      color: white;
+      padding: 55px 5% 25px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+      padding-bottom: 50px;
+    }
+
+    .footer-brand h2 {
+      font-size: 42px;
+      letter-spacing: -3px;
+      margin-bottom: 12px;
+    }
+
+    .footer-brand p {
+      font-size: 12px;
+      color: #bbb;
+      line-height: 1.7;
+      max-width: 270px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 70px;
+    }
+
+    .footer-column h3 {
+      font-size: 11px;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+
+    .footer-column a {
+      display: block;
+      color: #bbb;
+      font-size: 12px;
+      margin-bottom: 13px;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #444;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      color: #999;
+      font-size: 10px;
+    }
+
+    @media (max-width: 850px) {
+      .desktop-nav {
+        gap: 15px;
+      }
+
+      .product-grid,
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero {
+        min-height: 480px;
+      }
+
+      .hero-art {
+        min-height: 480px;
+      }
+
+      .hero-copy {
+        padding: 55px 8%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .announcement {
+        font-size: 9px;
+      }
+
+      header {
+        padding: 17px 5%;
+      }
+
+      .logo {
+        font-size: 27px;
+      }
+
+      .desktop-nav {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: block;
+        position: relative;
+      }
+
+      .mobile-menu summary {
+        list-style: none;
+        cursor: pointer;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+
+      .mobile-menu nav {
+        position: absolute;
+        top: 30px;
+        left: 0;
+        background: var(--cream);
+        border: 1px solid rgba(0,0,0,.15);
+        padding: 18px;
+        min-width: 160px;
+        display: flex;
+        flex-direction: column;
+        gap: 17px;
+        box-shadow: 0 8px 20px rgba(0,0,0,.08);
+      }
+
+      .mobile-menu nav a {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .header-actions {
+        gap: 12px;
+      }
+
+      .header-actions a {
+        font-size: 10px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        padding: 65px 7% 55px;
+      }
+
+      .hero h1 {
+        font-size: 68px;
+        letter-spacing: -4px;
+      }
+
+      .hero-art {
+        min-height: 330px;
+      }
+
+      .hero-art::before {
+        font-size: 300px;
+      }
+
+      section {
+        padding: 60px 5%;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+      }
+
+      .section-heading h2 {
+        font-size: 32px;
+      }
+
+      .section-heading a {
+        font-size: 9px;
+        white-space: nowrap;
+      }
+
+      .product-grid {
+        gap: 10px;
+      }
+
+      .product-image span {
+        font-size: 75px;
+      }
+
+      .product-info h3 {
+        font-size: 12px;
+      }
+
+      .category-grid {
+        gap: 10px;
+      }
+
+      .category-card {
+        min-height: 220px;
+        padding: 16px;
+      }
+
+      .category-card h3 {
+        font-size: 23px;
+      }
+
+      .category-symbol {
+        font-size: 75px;
+      }
+
+      .brand-banner {
+        padding: 75px 20px;
+      }
+
+      .brand-banner h2 {
+        letter-spacing: -3px;
+      }
+
+      .newsletter {
+        padding: 70px 20px;
+      }
+
+      .faq h2 {
+        font-size: 36px;
+      }
+
+      .footer-top {
+        flex-direction: column;
+      }
+
+      .footer-links {
+        gap: 45px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-  <a href="#" class="logo">NERROW</a>
-  <nav>
-    <a href="#shop">SHOP</a>
-    <a href="#about">ABOUT</a>
-    <a href="#contact">CONTACT</a>
-  </nav>
-</header>
-<style>
-.hero {
-  margin: 30px 5%;
-  min-height: 430px;
-  background: #dce5fa;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  overflow: hidden;
-  border-radius: 5px;
-}
+  <div class="announcement">
+    WELCOME TO NERROW — EVERYDAY, REIMAGINED.
+  </div>
 
-.hero-content {
-  padding: 45px;
-  max-width: 570px;
-}
+  <header>
+    <a href="#" class="logo">NERROW.</a>
 
-.eyebrow {
-  font-size: 11px;
-  font-weight: bold;
-  letter-spacing: 3px;
-  margin-bottom: 20px;
-}
+    <nav class="desktop-nav">
+      <a href="#new-arrivals">New Arrivals</a>
+      <a href="#bestsellers">Bestsellers</a>
+      <a href="#categories">Categories</a>
+      <a href="#about">About</a>
+    </nav>
 
-.hero h1 {
-  font-size: clamp(43px, 7vw, 76px);
-  line-height: .98;
-  letter-spacing: -4px;
-  margin-bottom: 22px;
-}
+    <details class="mobile-menu">
+      <summary>MENU ☰</summary>
+      <nav>
+        <a href="#new-arrivals">New Arrivals</a>
+        <a href="#bestsellers">Bestsellers</a>
+        <a href="#categories">Categories</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </details>
 
-.hero p {
-  font-size: 15px;
-  line-height: 1.7;
-  margin-bottom: 28px;
-}
-
-.shop-button {
-  display: inline-block;
-  background: #222;
-  color: white;
-  padding: 15px 27px;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.hero-art {
-  align-self: stretch;
-  width: 43%;
-  background: #e45b50;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: clamp(65px, 11vw, 110px);
-  font-weight: 900;
-  font-style: italic;
-}
-
-.section {
-  padding: 65px 7%;
-}
-
-.section-heading {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 30px;
-}
-
-.section-heading h2 {
-  font-size: 30px;
-}
-
-.products {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
-
-.product-image {
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.product-image span {
-  font-size: 55px;
-  font-weight: 900;
-  font-style: italic;
-}
-
-.product-one {
-  background: #e8d9c6;
-  color: #8e5841;
-}
-
-.product-two {
-  background: #cbd9ca;
-  color: #42604c;
-}
-
-.product-three {
-  background: #f0d1cc;
-  color: #bd6258;
-}
-
-.product-info {
-  padding: 15px 2px;
-}
-
-.product-info h3 {
-  font-size: 15px;
-  margin-bottom: 7px;
-}
-
-.product-info p {
-  font-size: 13px;
-  color: #777;
-}
-
-.brand-message {
-  background: #e8c75e;
-  padding: 75px 10%;
-  text-align: center;
-}
-
-.brand-message h2 {
-  font-size: clamp(35px, 6vw, 57px);
-  margin-bottom: 18px;
-}
-
-.brand-message p {
-  max-width: 500px;
-  margin: auto;
-  font-size: 15px;
-  line-height: 1.8;
-}
-
-.about {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  align-items: center;
-}
-
-.about-block {
-  background: #5278d8;
-  color: white;
-  min-height: 280px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 65px;
-  font-weight: 900;
-  font-style: italic;
-}
-
-.about-text h2 {
-  font-size: 32px;
-  margin-bottom: 18px;
-}
-
-.about-text p {
-  font-size: 15px;
-  line-height: 1.8;
-  color: #555;
-}
-
-footer {
-  background: #222;
-  color: white;
-  padding: 40px 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-</style>
-
-<main>
-  <section class="hero">
-    <div class="hero-content">
-      <div class="eyebrow">INTRODUCING NERROW</div>
-      <h1>EVERYDAY.<br>REIMAGINED.</h1>
-      <p>Clothing made to express your individuality. Discover the beginning of NERROW.</p>
-      <a href="#shop" class="shop-button">EXPLORE THE COLLECTION</a>
+    <div class="header-actions">
+      <a href="#contact">Contact</a>
+      <a href="#new-arrivals">Bag (0)</a>
     </div>
-    <div class="hero-art">N.</div>
-  </section>
+  </header>
 
-  <section class="section" id="shop">
-    <div class="section-heading">
-      <h2>New Arrivals</h2>
-      <a href="#shop">VIEW ALL</a>
-    </div>
+  <main>
 
-    <div class="products">
-      <div>
-        <div class="product-image product-one">
-          <span>N.</span>
-        </div>
-        <div class="product-info">
-          <h3>Everyday T-Shirt</h3>
-          <p>$30.00</p>
-        </div>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">Introducing NERROW</div>
+        <h1>EVERYDAY.<br>REIMAGINED.</h1>
+        <p>
+          Everyday clothing with its own point of view.
+          Discover the latest from NERROW.
+        </p>
+        <a href="#new-arrivals" class="button">Shop the collection</a>
       </div>
 
-      <div>
-        <div class="product-image product-two">
-          <span>N.</span>
-        </div>
-        <div class="product-info">
-          <h3>Classic Sweatshirt</h3>
-          <p>$55.00</p>
-        </div>
+      <div class="hero-art">
+        <div class="hero-label">NERROW — EST. 2026</div>
+      </div>
+    </section>
+
+    <section id="new-arrivals">
+      <div class="section-heading">
+        <h2>New Arrivals</h2>
+        <a href="#categories">View all</a>
       </div>
 
-      <div>
-        <div class="product-image product-three">
-          <span>N.</span>
+      <div class="product-grid">
+        <article>
+          <div class="product-image one">
+            <span>N.</span>
+            <div class="product-tag">NEW</div>
+          </div>
+          <div class="product-info">
+            <h3>Everyday T-Shirt</h3>
+            <p>$30.00</p>
+          </div>
+        </article>
+
+        <article>
+          <div class="product-image two">
+            <span>N.</span>
+            <div class="product-tag">NEW</div>
+          </div>
+          <div class="product-info">
+            <h3>Classic Sweatshirt</h3>
+            <p>$55.00</p>
+          </div>
+        </article>
+
+        <article>
+          <div class="product-image three">
+            <span>N.</span>
+          </div>
+          <div class="product-info">
+            <h3>Essential Hoodie</h3>
+            <p>$60.00</p>
+          </div>
+        </article>
+
+        <article>
+          <div class="product-image four">
+            <span>N.</span>
+          </div>
+          <div class="product-info">
+            <h3>Relaxed Fit Pants</h3>
+            <p>$50.00</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="bestsellers" id="bestsellers">
+      <div class="section-heading">
+        <h2>Bestsellers</h2>
+        <a href="#categories">Shop all</a>
+      </div>
+
+      <div class="product-grid">
+        <article>
+          <div class="product-image five">
+            <span>N.</span>
+            <div class="product-tag">POPULAR</div>
+          </div>
+          <div class="product-info">
+            <h3>Logo Tee</h3>
+            <p>$30.00</p>
+          </div>
+        </article>
+
+        <article>
+          <div class="product-image six">
+            <span>N.</span>
+          </div>
+          <div class="product-info">
+            <h3>Relaxed Hoodie</h3>
+            <p>$60.00</p>
+          </div>
+        </article>
+
+        <article>
+          <div class="product-image seven">
+            <span>N.</span>
+          </div>
+          <div class="product-info">
+            <h3>Everyday Long Sleeve</h3>
+            <p>$35.00</p>
+          </div>
+        </article>
+
+        <article>
+          <div class="product-image eight">
+            <span>N.</span>
+          </div>
+          <div class="product-info">
+            <h3>Essential Sweatpants</h3>
+            <p>$50.00</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="categories">
+      <div class="section-heading">
+        <h2>Shop by Category</h2>
+        <a href="#new-arrivals">Explore</a>
+      </div>
+
+      <div class="category-grid">
+        <a href="#new-arrivals" class="category-card tops">
+          <span class="category-symbol">01</span>
+          <h3>Tops</h3>
+          <p>Explore collection ↗</p>
+        </a>
+
+        <a href="#new-arrivals" class="category-card bottoms">
+          <span class="category-symbol">02</span>
+          <h3>Bottoms</h3>
+          <p>Explore collection ↗</p>
+        </a>
+
+        <a href="#new-arrivals" class="category-card outerwear">
+          <span class="category-symbol">03</span>
+          <h3>Outerwear</h3>
+          <p>Explore collection ↗</p>
+        </a>
+
+        <a href="#new-arrivals" class="category-card accessories">
+          <span class="category-symbol">04</span>
+          <h3>Accessories</h3>
+          <p>Explore collection ↗</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="brand-banner" id="about">
+      <div class="eyebrow">A little about us</div>
+      <h2>MADE TO BE<br>YOUR OWN.</h2>
+      <p>
+        NERROW is an independent, Black-owned clothing label
+        built around everyday pieces, personal style, and
+        doing things our own way.
+      </p>
+      <a href="#contact" class="button">Get in touch</a>
+    </section>
+
+    <section class="newsletter">
+      <h2>STAY IN THE LOOP.</h2>
+      <p>Be the first to hear about new releases and updates.</p>
+
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email address" aria-label="Email address">
+        <button type="button">SIGN UP ↗</button>
+      </form>
+    </section>
+
+    <section class="faq">
+      <h2>Questions?</h2>
+
+      <details>
+        <summary>When will new products be released?</summary>
+        <p>New releases will be announced through our website and social channels.</p>
+      </details>
+
+      <details>
+        <summary>Where can I contact NERROW?</summary>
+        <p>Use the contact section below to reach out with questions or inquiries.</p>
+      </details>
+
+      <details>
+        <summary>Will you offer different sizes?</summary>
+        <p>Product sizing and available sizes will be listed with each item when the store launches.</p>
+      </details>
+
+      <details>
+        <summary>Do you accept returns?</summary>
+        <p>Our return policy will be published before orders open.</p>
+      </details>
+    </section>
+
+  </main>
+
+  <footer id="contact">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h2>NERROW.</h2>
+        <p>
+          Everyday clothing. Personal style.
+          Made to be your own.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-column">
+          <h3>Explore</h3>
+          <a href="#new-arrivals">New Arrivals</a>
+          <a href="#bestsellers">Bestsellers</a>
+          <a href="#categories">Categories</a>
+          <a href="#about">About Us</a>
         </div>
-        <div class="product-info">
-          <h3>Essential Hoodie</h3>
-          <p>$60.00</p>
+
+        <div class="footer-column">
+          <h3>Information</h3>
+          <a href="#contact">Contact</a>
+          <a href="#contact">Shipping</a>
+          <a href="#contact">Returns</a>
+          <a href="#contact">Privacy</a>
         </div>
       </div>
     </div>
-  </section>
 
-  <section class="brand-message">
-    <h2>MADE TO BE YOURS.</h2>
-    <p>More than what you wear. NERROW is an independent clothing brand built around individuality, creativity, and everyday expression.</p>
-  </section>
-
-  <section class="section about" id="about">
-    <div class="about-block">NERROW</div>
-    <div class="about-text">
-      <h2>A LITTLE ABOUT US.</h2>
-      <p>NERROW is a Black-owned independent clothing brand focused on creating clothing with its own character. We're starting with the essentials and building something meaningful, one piece at a time.</p>
+    <div class="footer-bottom">
+      <p>© 2026 NERROW. ALL RIGHTS RESERVED.</p>
+      <p>INDEPENDENTLY OWNED.</p>
     </div>
-  </section>
-</main>
-
-<footer id="contact">
-  <div class="logo">NERROW</div>
-  <p>Independent by design. © 2026 NERROW.</p>
-  <a href="mailto:hello@nerrow.com">CONTACT</a>
-</footer>
-<style>
-@media (max-width: 700px) {
-  header {
-    padding: 18px 5%;
-  }
-
-  .logo {
-    font-size: 25px;
-  }
-
-  nav {
-    gap: 13px;
-    font-size: 11px;
-  }
-
-  .hero {
-    margin: 18px 4%;
-    min-height: 360px;
-  }
-
-  .hero-content {
-    padding: 25px;
-  }
-
-  .hero h1 {
-    font-size: 43px;
-    letter-spacing: -2px;
-  }
-
-  .hero-art {
-    width: 35%;
-    font-size: 55px;
-  }
-
-  .section {
-    padding: 45px 5%;
-  }
-
-  .products {
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-  }
-
-  .product-image {
-    height: 220px;
-  }
-
-  .product-image span {
-    font-size: 45px;
-  }
-
-  .about {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-
-  .about-block {
-    min-height: 220px;
-  }
-
-  footer {
-    flex-direction: column;
-    text-align: center;
-    gap: 18px;
-  }
-}
-
-@media (max-width: 380px) {
-  nav {
-    gap: 8px;
-    font-size: 10px;
-  }
-
-  .hero-art {
-    font-size: 40px;
-  }
-}
-</style>
+  </footer>
 
 </body>
 </html>
