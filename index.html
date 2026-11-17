@@ -2,267 +2,390 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NERROW — Independent Streetwear</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NERROW — Clothing for Everyday</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f7f4ed;
+  color: #222;
+}
 
-    body {
-      background: #080808;
-      color: #f2f2f2;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 7%;
+  border-bottom: 1px solid #dedbd3;
+}
 
-    header {
-      min-height: 75px;
-      padding: 0 6%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #292929;
-    }
+.logo {
+  font-size: 30px;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -2px;
+}
 
-    .logo {
-      font-size: 32px;
-      font-weight: 900;
-      font-style: italic;
-      letter-spacing: -2px;
-    }
+nav {
+  display: flex;
+  gap: 25px;
+  font-size: 13px;
+  font-weight: bold;
+}
 
-    nav {
-      display: flex;
-      gap: 25px;
-      font-size: 11px;
-      letter-spacing: 2px;
-    }
-
-    .hero {
-      min-height: 620px;
-      padding: 100px 8%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: radial-gradient(
-        ellipse at 75% 45%,
-        #383838 0%, #151515 35%, #080808 75%
-      );
-    }
-
-    .eyebrow {
-      color: #999;
-      font-size: 11px;
-      letter-spacing: 5px;
-      margin-bottom: 25px;
-    }
-
-    .hero h1 {
-      font-size: clamp(65px, 13vw, 150px);
-      line-height: .85;
-      letter-spacing: -9px;
-      font-weight: 900;
-      font-style: italic;
-    }
-
-    .hero p {
-      color: #aaa;
-      font-size: 13px;
-      letter-spacing: 3px;
-      margin-top: 30px;
-    }
-
-    .shop-link {
-      display: inline-block;
-      width: fit-content;
-      margin-top: 45px;
-      padding: 16px 35px;
-      border: 1px solid #aaa;
-      font-size: 11px;
-      letter-spacing: 3px;
-      transition: .3s;
-    }
-
-    .shop-link:hover {
-      background: white;
-      color: black;
-    }
-
-    .collection {
-      padding: 85px 6%;
-    }
-
-    .section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 35px;
-    }
-
-    .section-heading h2 {
-      font-size: 24px;
-      letter-spacing: 3px;
-    }
-
-    .section-heading span {
-      color: #777;
-      font-size: 11px;
-      letter-spacing: 2px;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .product-image {
-      aspect-ratio: 3 / 4;
-      background: linear-gradient(145deg, #292929, #111);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #777;
-      font-size: 12px;
-      letter-spacing: 3px;
-    }
-
-    .product h3 {
-      margin-top: 16px;
-      font-size: 13px;
-      letter-spacing: 1px;
-    }
-
-    .product p {
-      margin-top: 8px;
-      color: #888;
-      font-size: 12px;
-    }
-
-    footer {
-      padding: 40px 6%;
-      border-top: 1px solid #292929;
-      color: #777;
-      font-size: 11px;
-      letter-spacing: 2px;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    @media (max-width: 600px) {
-      header {
-        padding: 0 5%;
-      }
-
-      .logo {
-        font-size: 26px;
-      }
-
-      nav {
-        gap: 12px;
-        font-size: 9px;
-      }
-
-      .hero {
-        min-height: 520px;
-        padding: 70px 6%;
-      }
-
-      .hero h1 {
-        letter-spacing: -5px;
-      }
-
-      .products {
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-      }
-
-      .collection {
-        padding: 65px 5%;
-      }
-
-      footer {
-        gap: 20px;
-        flex-wrap: wrap;
-      }
-    }
-  </style>
+nav a:hover {
+  color: #e45b50;
+}
+</style>
 </head>
-
 <body>
 
-  <header>
-    <a href="#" class="logo">NERROW</a>
+<header>
+  <a href="#" class="logo">NERROW</a>
+  <nav>
+    <a href="#shop">SHOP</a>
+    <a href="#about">ABOUT</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
+</header>
+<style>
+.hero {
+  margin: 30px 5%;
+  min-height: 430px;
+  background: #dce5fa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  border-radius: 5px;
+}
 
-    <nav>
-      <a href="#shop">SHOP</a>
-      <a href="#about">ABOUT</a>
-      <a href="#contact">CONTACT</a>
-    </nav>
-  </header>
+.hero-content {
+  padding: 45px;
+  max-width: 570px;
+}
 
-  <main>
-    <section class="hero">
-      <div class="eyebrow">INDEPENDENT DESIGN / EST. 2026</div>
+.eyebrow {
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
 
-      <h1>NERROW</h1>
+.hero h1 {
+  font-size: clamp(43px, 7vw, 76px);
+  line-height: .98;
+  letter-spacing: -4px;
+  margin-bottom: 22px;
+}
 
-      <p>BEYOND THE ORDINARY.</p>
+.hero p {
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
 
-      <a href="#shop" class="shop-link">EXPLORE COLLECTION</a>
-    </section>
+.shop-button {
+  display: inline-block;
+  background: #222;
+  color: white;
+  padding: 15px 27px;
+  font-size: 12px;
+  font-weight: bold;
+}
 
-    <section class="collection" id="shop">
-      <div class="section-heading">
-        <h2>COLLECTION 001</h2>
-        <span>COMING SOON</span>
+.hero-art {
+  align-self: stretch;
+  width: 43%;
+  background: #e45b50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: clamp(65px, 11vw, 110px);
+  font-weight: 900;
+  font-style: italic;
+}
+
+.section {
+  padding: 65px 7%;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.section-heading h2 {
+  font-size: 30px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.product-image {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image span {
+  font-size: 55px;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.product-one {
+  background: #e8d9c6;
+  color: #8e5841;
+}
+
+.product-two {
+  background: #cbd9ca;
+  color: #42604c;
+}
+
+.product-three {
+  background: #f0d1cc;
+  color: #bd6258;
+}
+
+.product-info {
+  padding: 15px 2px;
+}
+
+.product-info h3 {
+  font-size: 15px;
+  margin-bottom: 7px;
+}
+
+.product-info p {
+  font-size: 13px;
+  color: #777;
+}
+
+.brand-message {
+  background: #e8c75e;
+  padding: 75px 10%;
+  text-align: center;
+}
+
+.brand-message h2 {
+  font-size: clamp(35px, 6vw, 57px);
+  margin-bottom: 18px;
+}
+
+.brand-message p {
+  max-width: 500px;
+  margin: auto;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.about-block {
+  background: #5278d8;
+  color: white;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 65px;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.about-text h2 {
+  font-size: 32px;
+  margin-bottom: 18px;
+}
+
+.about-text p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #555;
+}
+
+footer {
+  background: #222;
+  color: white;
+  padding: 40px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+</style>
+
+<main>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">INTRODUCING NERROW</div>
+      <h1>EVERYDAY.<br>REIMAGINED.</h1>
+      <p>Clothing made to express your individuality. Discover the beginning of NERROW.</p>
+      <a href="#shop" class="shop-button">EXPLORE THE COLLECTION</a>
+    </div>
+    <div class="hero-art">N.</div>
+  </section>
+
+  <section class="section" id="shop">
+    <div class="section-heading">
+      <h2>New Arrivals</h2>
+      <a href="#shop">VIEW ALL</a>
+    </div>
+
+    <div class="products">
+      <div>
+        <div class="product-image product-one">
+          <span>N.</span>
+        </div>
+        <div class="product-info">
+          <h3>Everyday T-Shirt</h3>
+          <p>$30.00</p>
+        </div>
       </div>
 
-      <div class="products">
-        <div class="product">
-          <div class="product-image">PRODUCT 01</div>
-          <h3>GARMENT 001</h3>
-          <p>COMING SOON</p>
+      <div>
+        <div class="product-image product-two">
+          <span>N.</span>
         </div>
-
-        <div class="product">
-          <div class="product-image">PRODUCT 02</div>
-          <h3>GARMENT 002</h3>
-          <p>COMING SOON</p>
-        </div>
-
-        <div class="product">
-          <div class="product-image">PRODUCT 03</div>
-          <h3>GARMENT 003</h3>
-          <p>COMING SOON</p>
+        <div class="product-info">
+          <h3>Classic Sweatshirt</h3>
+          <p>$55.00</p>
         </div>
       </div>
-    </section>
 
-    <section class="collection" id="about">
-      <div class="section-heading">
-        <h2>ABOUT NERROW</h2>
+      <div>
+        <div class="product-image product-three">
+          <span>N.</span>
+        </div>
+        <div class="product-info">
+          <h3>Essential Hoodie</h3>
+          <p>$60.00</p>
+        </div>
       </div>
-      <p style="color:#999; line-height:1.8; max-width:550px;">
-        An independent clothing label exploring unconventional
-        silhouettes, experimental design, and individual expression.
-      </p>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer id="contact">
-    <span>NERROW © 2026</span>
-    <span>INDEPENDENT BY DESIGN.</span>
-  </footer>
+  <section class="brand-message">
+    <h2>MADE TO BE YOURS.</h2>
+    <p>More than what you wear. NERROW is an independent clothing brand built around individuality, creativity, and everyday expression.</p>
+  </section>
+
+  <section class="section about" id="about">
+    <div class="about-block">NERROW</div>
+    <div class="about-text">
+      <h2>A LITTLE ABOUT US.</h2>
+      <p>NERROW is a Black-owned independent clothing brand focused on creating clothing with its own character. We're starting with the essentials and building something meaningful, one piece at a time.</p>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="logo">NERROW</div>
+  <p>Independent by design. © 2026 NERROW.</p>
+  <a href="mailto:hello@nerrow.com">CONTACT</a>
+</footer>
+<style>
+@media (max-width: 700px) {
+  header {
+    padding: 18px 5%;
+  }
+
+  .logo {
+    font-size: 25px;
+  }
+
+  nav {
+    gap: 13px;
+    font-size: 11px;
+  }
+
+  .hero {
+    margin: 18px 4%;
+    min-height: 360px;
+  }
+
+  .hero-content {
+    padding: 25px;
+  }
+
+  .hero h1 {
+    font-size: 43px;
+    letter-spacing: -2px;
+  }
+
+  .hero-art {
+    width: 35%;
+    font-size: 55px;
+  }
+
+  .section {
+    padding: 45px 5%;
+  }
+
+  .products {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  .product-image {
+    height: 220px;
+  }
+
+  .product-image span {
+    font-size: 45px;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .about-block {
+    min-height: 220px;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 380px) {
+  nav {
+    gap: 8px;
+    font-size: 10px;
+  }
+
+  .hero-art {
+    font-size: 40px;
+  }
+}
+</style>
 
 </body>
 </html>
