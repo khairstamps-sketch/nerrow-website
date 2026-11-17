@@ -167,6 +167,44 @@ section{padding:55px 5%}
 .cart-item{grid-template-columns:85px 1fr auto;gap:12px}
 .cart-thumb{height:100px}
 }
+.cart-toast {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 200;
+  width: min(350px, calc(100% - 40px));
+  background: var(--black);
+  color: var(--bone);
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  box-shadow: 0 8px 25px #0003;
+  opacity: 0;
+  transform: translateY(15px);
+  pointer-events: none;
+  transition: .25s ease;
+}
+
+.cart-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.cart-toast strong {
+  font-size: 13px;
+}
+
+.cart-toast a {
+  color: var(--bone);
+  font-size: 10px;
+  font-weight: bold;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--bone);
+  padding-bottom: 3px;
+}
 </style>
 </head>
 <body>
